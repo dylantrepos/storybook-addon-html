@@ -2,9 +2,9 @@
   "name": "@whitespace/storybook-addon-html",
   "version": "5.0.0",
   "description": "A Storybook addon that extracts and displays compiled syntax-highlighted HTML",
-  "main": "out/preset.js",
+  "main": "dist/preset.js",
   "files": [
-    "out/**/*",
+    "dist/**/*",
     "README.md",
     "*.js"
   ],
@@ -21,9 +21,9 @@
     "url": "https://github.com/whitespace-se/storybook-addon-html.git"
   },
   "scripts": {
-    "build": "yarn clean && babel -d ./out ./src",
-    "build:watch": "babel --watch -d ./out ./src",
-    "clean": "rm -rf ./out",
+    "build": "yarn clean && babel -d ./dist ./src",
+    "build:watch": "babel --watch -d ./dist ./src",
+    "clean": "rm -rf ./dist",
     "prepare": "yarn build",
     "prepublishOnly": "cp ../README.md ."
   },

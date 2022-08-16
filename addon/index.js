@@ -1,3 +1,1 @@
-// console.log('YES')
-
-module.exports = require('./out/index');
+module.exports = require('./dist/index');
