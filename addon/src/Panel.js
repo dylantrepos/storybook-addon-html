@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useChannel, useParameter } from '@storybook/api';
 
-import SyntaxHighlighter from './SyntaxHighlighter';
-import style from 'react-syntax-highlighter/dist/esm/styles/hljs/github-gist';
 import { format as prettierFormat } from 'prettier/standalone';
 import prettierHtml from 'prettier/parser-html';
 import Editor from "@monaco-editor/react";
@@ -14,10 +12,11 @@ const PARAM_KEY = 'html';
 const HTMLPanel = () => {
   const [html, setHTML] = useState('');
   const [code, setCode] = useState('');
+  const [editor, setEditor] = useState(null);
+  const [handled, sethandled] = useState(false);
 
   const parameters = useParameter(PARAM_KEY, {});
   const {
-    highlighter: { showLineNumbers = false, wrapLines = true } = {},
     prettier = {},
   } = parameters;
 
@@ -34,9 +33,25 @@ const HTMLPanel = () => {
       setHTML(html);
     },
   });
+
   useEffect(() => {
     setCode(prettierFormat(html, prettierConfig));
   }, [html]);
+
+  if(editor && handled) {
+    sethandled(false);
+    editor.onDidChangeModelDecorations(() => {
+      editor._actions['editor.action.formatDocument']._run()
+      /**
+       * ! LE PROBLEME : Cela arrive parceque les balises sont collés entre elles lors de l'écriture HTML
+       */
+    })
+  }
+
+  const test = (editor) => {
+    setEditor(editor);
+    sethandled(true)
+  }
 
   return (
       <Editor
@@ -44,6 +59,7 @@ const HTMLPanel = () => {
        defaultLanguage="html"
        value={code}
        theme="vs-dark"
+       onMount={test}
      />
   );
 };
