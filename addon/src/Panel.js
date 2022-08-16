@@ -5,6 +5,7 @@ import SyntaxHighlighter from './SyntaxHighlighter';
 import style from 'react-syntax-highlighter/dist/esm/styles/hljs/github-gist';
 import { format as prettierFormat } from 'prettier/standalone';
 import prettierHtml from 'prettier/parser-html';
+import Editor from "@monaco-editor/react";
 
 import { EVENT_CODE_RECEIVED } from './shared';
 
@@ -36,17 +37,14 @@ const HTMLPanel = () => {
   useEffect(() => {
     setCode(prettierFormat(html, prettierConfig));
   }, [html]);
+
   return (
-    <SyntaxHighlighter
-      language={'xml'}
-      copyable={true}
-      padded={true}
-      style={style}
-      showLineNumbers={showLineNumbers}
-      wrapLines={wrapLines}
-    >
-      {code}
-    </SyntaxHighlighter>
+      <Editor
+       height="90vh"
+       defaultLanguage="html"
+       value={code}
+       theme="vs-dark"
+     />
   );
 };
 
