@@ -1,7 +1,7 @@
 {
-  "name": "@whitespace/storybook-addon-html",
+  "name": "@dylantrepos/storybook-addon-html-monaco",
   "version": "5.0.0",
-  "description": "A Storybook addon that extracts and displays compiled syntax-highlighted HTML",
+  "description": "Extract HTML code and inject it into monaco editor with clean prettier configurations (for HTML vanilla only).",
   "main": "dist/preset.js",
   "files": [
     "dist/**/*",
@@ -13,12 +13,11 @@
     "storybook",
     "html",
     "storybook-addon",
-    "code",
-    "popular"
+    "monaco"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/whitespace-se/storybook-addon-html.git"
+    "url": "https://github.com/dylantrepos/storybook-addon-html.git"
   },
   "scripts": {
     "build": "yarn clean && babel -d ./dist ./src",
@@ -27,7 +26,7 @@
     "prepare": "yarn build",
     "prepublishOnly": "cp ../README.md ."
   },
-  "author": "Whitespace",
+  "author": "Dylan Trepos",
   "license": "AGPL",
   "devDependencies": {
     "@babel/cli": "^7.13.10",
@@ -60,6 +59,7 @@
   },
   "storybook": {
     "icon": "https://avatars1.githubusercontent.com/u/10450088?s=400&u=b2a95469b7d2addf63366a93a17f0bd06f9894cc&v=4",
-    "displayName": "HTML preview"
+    "displayName": "HTML preview with monaco editor for html vanilla",
+    "supportedFrameworks": "html"
   }
 }
