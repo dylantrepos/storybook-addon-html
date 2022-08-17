@@ -10,18 +10,16 @@ var _Panel = _interopRequireDefault(require("./Panel"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const ADDON_ID = 'html';
-const PANEL_ID = "".concat(ADDON_ID, "/panel");
+var ADDON_ID = 'html';
+var PANEL_ID = "".concat(ADDON_ID, "/panel");
 
-_addons.addons.register(ADDON_ID, () => {
+_addons.addons.register(ADDON_ID, function () {
   _addons.addons.add(PANEL_ID, {
     title: 'HTML',
     type: _addons.types.PANEL,
-    render: _ref => {
-      let {
-        active,
-        key
-      } = _ref;
+    render: function render(_ref) {
+      var active = _ref.active,
+          key = _ref.key;
       return /*#__PURE__*/_react.default.createElement(_components.AddonPanel, {
         active: active,
         key: key

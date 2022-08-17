@@ -11,7 +11,7 @@ Object.keys(_withHTML).forEach(function (key) {
   if (key in exports && exports[key] === _withHTML[key]) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _withHTML[key];
     }
   });

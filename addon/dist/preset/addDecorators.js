@@ -7,5 +7,5 @@ exports.decorators = void 0;
 
 var _decorators = require("../decorators");
 
-const decorators = [_decorators.withHTML];
+var decorators = [_decorators.withHTML];
 exports.decorators = decorators;

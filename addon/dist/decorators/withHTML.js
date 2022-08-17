@@ -9,20 +9,19 @@ var _addons = require("@storybook/addons");
 
 var _shared = require("../shared");
 
-const withHTML = (0, _addons.makeDecorator)({
+var withHTML = (0, _addons.makeDecorator)({
   name: 'withHTML',
   parameterName: 'html',
   skipIfNoParametersOrOptions: false,
-  wrapper: (storyFn, context, _ref) => {
-    let {
-      parameters = {}
-    } = _ref;
-    setTimeout(() => {
-      const channel = _addons.addons.getChannel();
+  wrapper: function wrapper(storyFn, context, _ref) {
+    var _ref$parameters = _ref.parameters,
+        parameters = _ref$parameters === void 0 ? {} : _ref$parameters;
+    setTimeout(function () {
+      var channel = _addons.addons.getChannel();
 
-      const rootSelector = parameters.root || '#root';
-      const root = document.querySelector(rootSelector);
-      let html; // Check if HTML has been added manually, else get it from root
+      var rootSelector = parameters.root || '#root';
+      var root = document.querySelector(rootSelector);
+      var html; // Check if HTML has been added manually, else get it from root
 
       if (parameters.code) {
         html = parameters.code;
@@ -35,7 +34,7 @@ const withHTML = (0, _addons.makeDecorator)({
       }
 
       channel.emit(_shared.EVENT_CODE_RECEIVED, {
-        html,
+        html: html,
         options: parameters
       });
     }, 0);
