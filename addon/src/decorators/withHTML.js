@@ -10,10 +10,18 @@ export const withHTML = makeDecorator({
       const channel = addons.getChannel();
       const rootSelector = parameters.root || '#root';
       const root = document.querySelector(rootSelector);
-      let html = root ? root.innerHTML : `${rootSelector} not found.`;
+      let html;
+      // Check if HTML has been added manually, else get it from root
+      if(parameters.code) {
+        html = parameters.code
+      } else {
+        html = root ? root.innerHTML : `${rootSelector} not found.`;
+      }
       if (parameters.removeEmptyComments) {
         html = html.replace(/<!--\s*-->/g, '');
       }
+      console.log('params : ', parameters.code);
+      console.log('context : ', context);
       channel.emit(EVENT_CODE_RECEIVED, { html, options: parameters });
     }, 0);
     return storyFn(context);

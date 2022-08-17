@@ -10,6 +10,7 @@ import { EVENT_CODE_RECEIVED } from './shared';
 const HTMLPanel = () => {
   const [html, setHTML] = useState('');
   const [code, setCode] = useState('');
+  const [block, setBlock] = useState(false);
 
   const prettierConfig = {
     "arrowParens": "always",
@@ -41,7 +42,7 @@ const HTMLPanel = () => {
   });
 
   useEffect(() => {
-    setCode(prettierFormat(html, prettierConfig));
+      setCode(prettierFormat(html, prettierConfig));
   }, [html]);
 
   return (
