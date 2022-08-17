@@ -26,7 +26,6 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 const HTMLPanel = () => {
   const [html, setHTML] = (0, _react.useState)('');
   const [code, setCode] = (0, _react.useState)('');
-  const [block, setBlock] = (0, _react.useState)(false);
   const prettierConfig = {
     "arrowParens": "always",
     "bracketSameLine": false,

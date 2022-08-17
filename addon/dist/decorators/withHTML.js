@@ -34,8 +34,6 @@ const withHTML = (0, _addons.makeDecorator)({
         html = html.replace(/<!--\s*-->/g, '');
       }
 
-      console.log('params : ', parameters.code);
-      console.log('context : ', context);
       channel.emit(_shared.EVENT_CODE_RECEIVED, {
         html,
         options: parameters

@@ -20,8 +20,6 @@ export const withHTML = makeDecorator({
       if (parameters.removeEmptyComments) {
         html = html.replace(/<!--\s*-->/g, '');
       }
-      console.log('params : ', parameters.code);
-      console.log('context : ', context);
       channel.emit(EVENT_CODE_RECEIVED, { html, options: parameters });
     }, 0);
     return storyFn(context);
