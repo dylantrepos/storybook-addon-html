@@ -21,13 +21,8 @@ var withHTML = (0, _addons.makeDecorator)({
 
       var rootSelector = parameters.root || '#root';
       var root = document.querySelector(rootSelector);
-      var html; // Check if HTML has been added manually, else get it from root
-
-      if (parameters.code) {
-        html = parameters.code;
-      } else {
-        html = root ? root.innerHTML : "".concat(rootSelector, " not found.");
-      }
+      var html;
+      html = root ? root.innerHTML : "".concat(rootSelector, " not found.");
 
       if (parameters.removeEmptyComments) {
         html = html.replace(/<!--\s*-->/g, '');

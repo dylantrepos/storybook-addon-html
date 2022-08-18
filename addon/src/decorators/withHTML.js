@@ -11,12 +11,7 @@ export const withHTML = makeDecorator({
       const rootSelector = parameters.root || '#root';
       const root = document.querySelector(rootSelector);
       let html;
-      // Check if HTML has been added manually, else get it from root
-      if(parameters.code) {
-        html = parameters.code
-      } else {
-        html = root ? root.innerHTML : `${rootSelector} not found.`;
-      }
+      html = root ? root.innerHTML : `${rootSelector} not found.`;
       if (parameters.removeEmptyComments) {
         html = html.replace(/<!--\s*-->/g, '');
       }
